@@ -8,6 +8,12 @@ import PropTypes from "prop-types";
 import { darken, lighten } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Orbiturary from "./components/orbiturary";
+import PhotoVideo from "./components/photosVideos";
+import CommentBook from "./components/commentBook";
+import Timeline from "./components/timeline";
+import Footer from "../../components/Footer";
+import MemoryForm from "../../components/MemoryForm/MemoryForm";
 
 const Root = styled("div")(({ theme }) => ({
   ".navbar-nav ul": {
@@ -275,6 +281,13 @@ function Profile() {
           Timeline
         </li>
       </ul>
+      {section === "1" ? <Orbiturary /> : ""}
+      {section === "2" ? <PhotoVideo /> : ""}
+      {section === "3" ? <CommentBook /> : ""}
+      {section === "4" ? <Timeline /> : ""}
+
+      <MemoryForm />
+      <Footer />
     </Root>
   );
 }
