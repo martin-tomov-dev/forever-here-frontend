@@ -60,6 +60,8 @@ const headerTitle = "";
 
 function Profile() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("lg"));
+  const isDesktop = useMediaQuery((theme) => theme.breakpoints.down("md"));
+
   const [section, setSection] = useState("1");
 
   const changeSections = (sectionNumber) => {
@@ -132,12 +134,12 @@ function Profile() {
           <h1 className="text-white text-center drop-shadow-md">
             SYDNEY HOOFER
           </h1>
-          {isMobile ? (
-            <div className="flex flex-col px-10">
+          {isDesktop ? (
+            <div className="flex flex-col px-10 flex-1 justify-evenly">
               <div className="p-[100px] py-10">
-                <div className="ml-auto mr-auto p-10 bg-[#00453F]">
+                <div className="ml-auto mr-auto p-10 bg-[#00453F] w-[70%] sm:w-[40%]">
                   <img
-                    className="ml-auto mr-auto w-[400px]"
+                    className="ml-auto mr-auto"
                     src="/assets/images/apps/home/profile.png"
                   />
                 </div>
@@ -225,14 +227,13 @@ function Profile() {
                   </p>
                 </div>
 
-                <button className="bg-[#3E716C] w-[30%] ml-auto mr-auto text-white px-16 py-10 rounded-3xl border-2 border-transparent border-white">
+                <button className="bg-[#3E716C] lg:w-[30%] w-[50%] ml-auto mr-auto text-white px-16 py-10 rounded-3xl border-2 border-transparent border-white">
                   Donation
                 </button>
               </div>
               <div className="mt-10">
                 <div className="ml-auto mr-auto p-10 bg-[#00453F]">
                   <img
-                    style={{ width: "400px" }}
                     className="ml-auto mr-auto w-[400px]"
                     src="/assets/images/apps/home/profile.png"
                   />
@@ -260,7 +261,7 @@ function Profile() {
                 </div>
                 <div className="">
                   <p className="text-center text-white">Favourite Song</p>
-                  <div className="flex flex-row h-[40px] bg-white w-1/2 mt-1 rounded-12 ml-auto mr-auto p-5">
+                  <div className="flex flex-row h-[40px] bg-white lg:w-1/2 w-[70%] mt-1 rounded-12 ml-auto mr-auto p-5">
                     <p className="text-center flex-1 font-bold flex items-center justify-center">
                       The Entertainer - Scott Joplin
                     </p>
@@ -269,7 +270,7 @@ function Profile() {
                       src="/assets/images/apps/home/song-entainer.png"
                     />
                   </div>
-                  <div className="flex flex-row w-1/2 ml-auto mr-auto mt-10 py-16 rounded-12 bg-white justify-between">
+                  <div className="flex flex-row lg:w-1/2 w-[70%] ml-auto mr-auto mt-10 py-16 rounded-12 bg-white justify-between">
                     <button className="flex flex-row w-1/3 justify-center">
                       <img src="/assets/images/apps/home/arrow-left.png" />
                       <img src="/assets/images/apps/home/arrow-left.png" />
@@ -288,7 +289,7 @@ function Profile() {
             </div>
           )}
 
-          <div className="h-full flex flex-row justify-center items-center gap-20">
+          <div className="mt-auto pb-10 flex flex-row justify-center items-center gap-20">
             <p className="text-white">Click to show your love</p>
             <div className="relative flex flex-row">
               <p
@@ -299,7 +300,7 @@ function Profile() {
               </p>
               <img src="/assets/icons/love-icon.png" />
             </div>
-            <img src="/assets/icons/group.png" />
+            <img src="/assets/icons/Group.png" />
             <img src="/assets/icons/facebook.png" />
           </div>
         </div>
