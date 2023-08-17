@@ -57,7 +57,7 @@ function Header(props) {
     backgroundPosition,
   } = props;
 
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("lg"));
   return (
     <Root>
       <Box
@@ -86,6 +86,28 @@ function Header(props) {
             }}
           >
             <ul>
+              <li className="btn-login">
+                <form className="flex items-center">
+                  <label htmlFor="voice-search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="relative w-full">
+                    <input
+                      type="text"
+                      id="voice-search"
+                      className="bg-inherit text-gray-900 text-sm roundedLg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Search Profiles"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center rounded-8 py-2.5 px-3 ml-2 text-sm font-medium text-white bg-blue-700 roundedLg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Search
+                  </button>
+                </form>
+              </li>
               <a href="/">
                 <li>Home</li>
               </a>

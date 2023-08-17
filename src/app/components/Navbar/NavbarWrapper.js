@@ -1,8 +1,7 @@
-import { memo } from 'react';
-import Navbar from './Navbar';
+import { memo } from "react";
+import Navbar from "./Navbar";
 
 function NavbarWrapper(props) {
-
   return (
     <>
       <Navbar />

@@ -1,14 +1,17 @@
-import Hidden from '@mui/material/Hidden';
-import { styled } from '@mui/material/styles';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { useDispatch, useSelector } from 'react-redux';
-import { navbarCloseMobile, selectForeverNavbar } from '../../store/forever/navbarSlice';
-import NavbarContent from './NavbarContent';
+import Hidden from "@mui/material/Hidden";
+import { styled } from "@mui/material/styles";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  navbarCloseMobile,
+  selectForeverNavbar,
+} from "../../store/forever/navbarSlice";
+import NavbarContent from "./NavbarContent";
 
 const navbarWidth = 280;
 
 const StyledNavBarMobile = styled(SwipeableDrawer)(({ theme }) => ({
-  '& .MuiDrawer-paper': {
+  "& .MuiDrawer-paper": {
     minWidth: navbarWidth,
     width: navbarWidth,
     maxWidth: navbarWidth,
@@ -24,7 +27,7 @@ function NavbarStyle1(props) {
       <Hidden mdUp>
         <StyledNavBarMobile
           classes={{
-            paper: 'flex-col flex-auto h-full',
+            paper: "flex-col flex-auto h-full",
           }}
           anchor="right"
           variant="temporary"
