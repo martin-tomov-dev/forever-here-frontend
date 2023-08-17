@@ -116,7 +116,7 @@ function Profile() {
             </ul>
           </Box>
         )}
-        <div className="h-full flex flex-col">
+        <div className="h-full flex flex-col ">
           <div className="w-full">
             <motion.div
               initial={{ opacity: 0, y: 0 }}
@@ -132,97 +132,162 @@ function Profile() {
           <h1 className="text-white text-center drop-shadow-md">
             SYDNEY HOOFER
           </h1>
-          <div className="flex flex-row">
-            <div className="flex-1 flex flex-col justify-between">
-              <div className="w-full" style={{ height: "44px" }}></div>
-              <div className="mt-auto mb-auto">
-                <p className="text-center text-white">26th of March</p>
-                <div className="flex flex-row py-5">
-                  <h1
-                    className="text-white text-right"
-                    style={{ marginLeft: "50%" }}
-                  >
-                    1939
-                  </h1>
-                  <div className="px-10 flex items-center w-full">
-                    <img
-                      className="ml-0"
-                      src="/assets/images/apps/home/line-horizontal.png"
-                      style={{ width: "100%" }}
-                    />
-                  </div>
-                </div>
-                <p className="text-white text-center">
-                  Sheffield, United Kingdom
-                </p>
-              </div>
-
-              <button
-                style={{ width: "30%" }}
-                className="bg-[#3E716C] ml-auto mr-auto text-white px-16 py-10 rounded-3xl border-2 border-transparent border-white"
-              >
-                Donation
-              </button>
-            </div>
-            <div className="mt-10">
-              <div className="ml-auto mr-auto p-10 bg-[#00453F]">
-                <img
-                  style={{ width: "400px" }}
-                  className="ml-auto mr-auto "
-                  src="/assets/images/apps/home/profile.png"
-                />
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col justify-between">
-              <div className="w-full" style={{ height: "128px" }}></div>
-
-              <div className="mt-auto mb-auto">
-                <p className="text-white text-center">18th of July</p>
-                <div className="flex flex-row">
-                  <div
-                    className="px-10 flex items-center"
-                    style={{ width: "45%" }}
-                  >
-                    <img
-                      className="ml-0 w-full"
-                      src="/assets/images/apps/home/line-horizontal.png"
-                      style={{ width: "100%" }}
-                    />
-                  </div>
-                  <h1 className="text-white flex-1">2022</h1>
-                </div>
-              </div>
-              <div className="">
-                <p className="text-center text-white">Favourite Song</p>
-                <div
-                  className="flex flex-row bg-white w-1/2 mt-1 rounded-12 ml-auto mr-auto p-5"
-                  style={{ height: "40px" }}
-                >
-                  <p className="text-center flex-1 font-bold flex items-center justify-center">
-                    The Entertainer - Scott Joplin
-                  </p>
+          {isMobile ? (
+            <div className="flex flex-col px-10">
+              <div className="p-[100px] py-10">
+                <div className="ml-auto mr-auto p-10 bg-[#00453F]">
                   <img
-                    style={{ width: "10%", minWidth: "30px" }}
-                    src="/assets/images/apps/home/song-entainer.png"
+                    className="ml-auto mr-auto w-[400px]"
+                    src="/assets/images/apps/home/profile.png"
                   />
                 </div>
-                <div className="flex flex-row w-1/2 ml-auto mr-auto mt-10 py-16 rounded-12 bg-white justify-between">
-                  <button className="flex flex-row w-1/3 justify-center">
-                    <img src="/assets/images/apps/home/arrow-left.png" />
-                    <img src="/assets/images/apps/home/arrow-left.png" />
+              </div>
+              <div className="flex flex-row">
+                <div className="mt-auto mb-auto w-1/2">
+                  <p className="text-center text-white">26th of March</p>
+                  <div className="flex flex-row">
+                    <h1 className="text-white text-center flex-1">1939</h1>
+                    {/* <div className="px-10 flex items-center w-full">
+                      <img
+                        className="ml-0"
+                        src="/assets/images/apps/home/line-horizontal.png"
+                        style={{ width: "100%" }}
+                      />
+                    </div> */}
+                  </div>
+                  <p className="text-white py-10 text-center">
+                    Sheffield, United Kingdom
+                  </p>
+                  <button className="bg-[#3E716C] ml-[20%] w-[60%] mt-10 text-white px-16 py-10 rounded-3xl border-2 border-transparent border-white">
+                    Donation
                   </button>
-                  <button className="flex flex-row w-1/3 gap-10 justify-center">
-                    <img src="/assets/images/apps/home/pause.png" />
-                    <img src="/assets/images/apps/home/pause.png" />
-                  </button>
-                  <button className="flex flex-row w-1/3 justify-center">
-                    <img src="/assets/images/apps/home/arrow-right-icon.png" />
-                    <img src="/assets/images/apps/home/arrow-right-icon.png" />
-                  </button>
+                </div>
+                <div className="mb-auto w-1/2">
+                  <p className="text-white text-center">18th of July</p>
+                  <div className="flex flex-row">
+                    {/* <div className="px-10 flex items-center flex-1">
+                      <img
+                        className="ml-0 w-full"
+                        src="/assets/images/apps/home/line-horizontal.png"
+                      />
+                    </div> */}
+                    <h1 className="text-white text-center flex-1">2022</h1>
+                  </div>
+                  <div className="flex flex-row h-[40px] bg-white w-[80%] mt-1 rounded-12 ml-auto mr-auto p-5">
+                    <p className="text-center flex-1 font-bold flex text-xs items-center justify-center">
+                      The Entertainer - Scott Joplin
+                    </p>
+                    <img
+                      className="w-[10%] min-w-[30px]"
+                      src="/assets/images/apps/home/song-entainer.png"
+                    />
+                  </div>
+                  <div className="flex flex-row w-[80%] ml-auto mr-auto mt-10 py-10 rounded-12 bg-white justify-between">
+                    <button className="flex flex-row w-1/3 justify-center">
+                      <img src="/assets/images/apps/home/arrow-left.png" />
+                      <img src="/assets/images/apps/home/arrow-left.png" />
+                    </button>
+                    <button className="flex flex-row w-1/3 gap-10 justify-center">
+                      <img src="/assets/images/apps/home/pause.png" />
+                      <img src="/assets/images/apps/home/pause.png" />
+                    </button>
+                    <button className="flex flex-row w-1/3 justify-center">
+                      <img src="/assets/images/apps/home/arrow-right-icon.png" />
+                      <img src="/assets/images/apps/home/arrow-right-icon.png" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex flex-row">
+              <div className="flex-1 flex flex-col justify-between">
+                <div className="w-full" style={{ height: "44px" }}></div>
+                <div className="mt-auto mb-auto">
+                  <p className="text-center text-white">26th of March</p>
+                  <div className="flex flex-row py-5">
+                    <h1
+                      className="text-white text-right"
+                      style={{ marginLeft: "50%" }}
+                    >
+                      1939
+                    </h1>
+                    <div className="px-10 flex items-center w-full">
+                      <img
+                        className="ml-0"
+                        src="/assets/images/apps/home/line-horizontal.png"
+                        style={{ width: "100%" }}
+                      />
+                    </div>
+                  </div>
+                  <p className="text-white text-center">
+                    Sheffield, United Kingdom
+                  </p>
+                </div>
+
+                <button className="bg-[#3E716C] w-[30%] ml-auto mr-auto text-white px-16 py-10 rounded-3xl border-2 border-transparent border-white">
+                  Donation
+                </button>
+              </div>
+              <div className="mt-10">
+                <div className="ml-auto mr-auto p-10 bg-[#00453F]">
+                  <img
+                    style={{ width: "400px" }}
+                    className="ml-auto mr-auto w-[400px]"
+                    src="/assets/images/apps/home/profile.png"
+                  />
+                </div>
+              </div>
+
+              <div className="flex-1 flex flex-col justify-between">
+                <div className="w-full h-[128px]"></div>
+
+                <div className="mt-auto mb-auto">
+                  <p className="text-white text-center">18th of July</p>
+                  <div className="flex flex-row">
+                    <div
+                      className="px-10 flex items-center"
+                      style={{ width: "45%" }}
+                    >
+                      <img
+                        className="ml-0 w-full"
+                        src="/assets/images/apps/home/line-horizontal.png"
+                        style={{ width: "100%" }}
+                      />
+                    </div>
+                    <h1 className="text-white flex-1">2022</h1>
+                  </div>
+                </div>
+                <div className="">
+                  <p className="text-center text-white">Favourite Song</p>
+                  <div className="flex flex-row h-[40px] bg-white w-1/2 mt-1 rounded-12 ml-auto mr-auto p-5">
+                    <p className="text-center flex-1 font-bold flex items-center justify-center">
+                      The Entertainer - Scott Joplin
+                    </p>
+                    <img
+                      className="w-[10%] min-w-[30px]"
+                      src="/assets/images/apps/home/song-entainer.png"
+                    />
+                  </div>
+                  <div className="flex flex-row w-1/2 ml-auto mr-auto mt-10 py-16 rounded-12 bg-white justify-between">
+                    <button className="flex flex-row w-1/3 justify-center">
+                      <img src="/assets/images/apps/home/arrow-left.png" />
+                      <img src="/assets/images/apps/home/arrow-left.png" />
+                    </button>
+                    <button className="flex flex-row w-1/3 gap-10 justify-center">
+                      <img src="/assets/images/apps/home/pause.png" />
+                      <img src="/assets/images/apps/home/pause.png" />
+                    </button>
+                    <button className="flex flex-row w-1/3 justify-center">
+                      <img src="/assets/images/apps/home/arrow-right-icon.png" />
+                      <img src="/assets/images/apps/home/arrow-right-icon.png" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="h-full flex flex-row justify-center items-center gap-20">
             <p className="text-white">Click to show your love</p>
             <div className="relative flex flex-row">
