@@ -309,8 +309,8 @@ function Profile() {
         <li
           className={
             section === "1"
-              ? "text-white w-1/4 py-16 flex justify-center font-bold cursor-pointer"
-              : "text-white w-1/4 py-16 flex justify-center cursor-pointer"
+              ? "text-white w-1/4 py-16 px-4 flex justify-center font-bold cursor-pointer text-center"
+              : "text-white w-1/4 py-16 px-4 flex justify-center cursor-pointer text-center"
           }
           onClick={() => changeSections("1")}
         >
@@ -319,8 +319,8 @@ function Profile() {
         <li
           className={
             section === "2"
-              ? "text-white w-1/4 py-16 flex justify-center font-bold cursor-pointer"
-              : "text-white w-1/4 py-16 flex justify-center cursor-pointer"
+              ? "text-white w-1/4 py-16 px-4 flex justify-center font-bold cursor-pointer text-center"
+              : "text-white w-1/4 py-16 px-4 flex justify-center cursor-pointer text-center"
           }
           onClick={() => changeSections("2")}
         >
@@ -329,8 +329,8 @@ function Profile() {
         <li
           className={
             section === "3"
-              ? "text-white w-1/4 py-16 flex justify-center font-bold cursor-pointer"
-              : "text-white w-1/4 py-16 flex justify-center cursor-pointer"
+              ? "text-white w-1/4 py-16 px-4 flex justify-center font-bold cursor-pointer text-center"
+              : "text-white w-1/4 py-16 px-4 flex justify-center cursor-pointer text-center"
           }
           onClick={() => changeSections("3")}
         >
@@ -339,8 +339,8 @@ function Profile() {
         <li
           className={
             section === "4"
-              ? "text-white w-1/4 py-16 flex justify-center font-bold cursor-pointer"
-              : "text-white w-1/4 py-16 flex justify-center cursor-pointer"
+              ? "text-white w-1/4 py-16 px-4 flex justify-center font-bold cursor-pointer text-center"
+              : "text-white w-1/4 py-16 px-4 flex justify-center cursor-pointer text-center"
           }
           onClick={() => changeSections("4")}
         >
