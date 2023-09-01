@@ -7,6 +7,7 @@ import ForeverMessagesPage from "../pages/forever-messages";
 import SignInPage from "../pages/sign-in";
 import SignUpPage from "../pages/sign-up";
 import Profile from "../pages/profile/Profile";
+import CreateProfilePage from "../pages/create-profile/CreateProfilePage";
 
 export const routeConfig = [
   {
@@ -48,5 +49,9 @@ export const routeConfig = [
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/create-profile",
+    element: <CreateProfilePage />,
   },
 ];

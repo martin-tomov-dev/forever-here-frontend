@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import NavbarToggleButton from "../../components/Navbar/NavbarToggleButton";
 import PropTypes from "prop-types";
@@ -106,7 +106,7 @@ function Profile() {
               </a>
               <a href="/sign-in">
                 <li className="btn-login">
-                  <LoginIcon className="text-18 md:text-20" /> Sign in
+                  <LogoutIcon className="text-18 md:text-20" /> Log Out
                 </li>
               </a>
               <a href="/sign-up">

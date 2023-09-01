@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 import { lighten } from "@mui/material/styles";
 import { useCallback, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Root = styled("div")(({ theme }) => ({
   input: {
@@ -37,6 +38,7 @@ function SignUpPage() {
   const [email, setEmail] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = useCallback(async () => {
     const options = {
@@ -61,6 +63,7 @@ function SignUpPage() {
 
     try {
       await axios.post(`${API_ENDPOINT}/api/register`, data);
+      navigate("/sign-in");
     } catch (error) {
       alert(error.response.data.message);
     }

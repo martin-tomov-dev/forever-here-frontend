@@ -57,9 +57,9 @@ function NavbarStyle1Content(props) {
 
       <List>
       {
-        navigations.map(nav => {
+        navigations.map((nav, index) => {
           return (
-            <ListItem>
+            <ListItem key={index}>
               <ListItemButton component="a" href={nav.url}>
                 <ListItemText primaryTypographyProps={{ color: '#FFF' }} primary={nav.title} />
               </ListItemButton>
