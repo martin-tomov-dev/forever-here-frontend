@@ -37,6 +37,7 @@ const userSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(foreverMessage.fulfilled, (state, action) => {
+      alert("successfully scheduled!");
       state.isLoading = false;
       state.isSuccess = true;
     });
