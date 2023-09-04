@@ -7,6 +7,11 @@ import NavbarToggleButton from "../../components/Navbar/NavbarToggleButton";
 import { motion } from "framer-motion";
 import { Button } from "@mui/material";
 import { darken, lighten } from "@mui/material/styles";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useCallback } from "react";
+import { foreverMessage } from "../../store/forever/userSlice";
 
 const Root = styled("div")(({ theme }) => ({
   ".navbar-nav ul": {
@@ -69,14 +74,43 @@ const Root = styled("div")(({ theme }) => ({
   },
 }));
 
-const headerBackground = "/assets/images/apps/home/profile-background.png";
-const headerDescription =
-  "Forever Here is an online memorial tribute where you can grow the legacy of your loved ones or begin your own story. Your photographs, kind words and videos all in one place, forever.";
 const backgroundPosition = "100%";
 
 function CreateProfilePage() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("lg"));
   const isDesktop = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const [subject, setSubject] = useState("");
+  const [name, setName] = useState("");
+  const [textMessage, setTextMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const dispatch = useDispatch();
+  const { isSuccess, isError, message } = useSelector(
+    (state) => state.forever.user
+  );
+
+  const sendMessage = useCallback(async () => {
+    const data = {
+      email: email,
+      phone_number: phone,
+      message: textMessage,
+      subject: subject,
+      name: name,
+    };
+
+    dispatch(foreverMessage(data));
+  }, [email, phone, textMessage, subject, name]);
+
+  useEffect(() => {
+    if (isError) {
+      // toast.error(message);
+      // alert("error");
+    } else if (isSuccess) {
+      // alert("success");
+      // toast.success("Welcome Back!");
+    }
+    // dispatch(authReset());
+  }, [isSuccess, isError, message, history, dispatch]);
 
   return (
     <Root>
@@ -147,7 +181,13 @@ function CreateProfilePage() {
               Send a Forever Message
             </h1>
             <div className="flex gap-20">
-              <input id="subject" type="text" placeholder="Subject" />
+              <input
+                id="subject"
+                type="text"
+                placeholder="Subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+              />
               <input
                 id="attachment"
                 type="text"
@@ -159,6 +199,8 @@ function CreateProfilePage() {
                 id="receiver"
                 type="text"
                 placeholder="Name of person receiving this message"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <input
                 id="schedule_time"
@@ -171,23 +213,30 @@ function CreateProfilePage() {
               className="mt-20 h-[200px] px-8 py-16"
               id="text"
               placeholder="Your message"
+              value={textMessage}
+              onChange={(e) => setTextMessage(e.target.value)}
             ></textarea>
             <div className="flex gap-20 mt-20">
               <input
                 id="email"
                 type="text"
                 placeholder="Email address for this message"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 id="mobile_number"
                 type="text"
                 placeholder="Mobile number for this message"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
             <Button
               className="w-full mt-20"
               variant="contained"
               color="secondary"
+              onClick={() => sendMessage()}
             >
               <span className="mx-8">Schedule a Message</span>
             </Button>
