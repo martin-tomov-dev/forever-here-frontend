@@ -11,7 +11,12 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useCallback } from "react";
-import { foreverMessage } from "../../store/forever/userSlice";
+import {
+  foreverMessage,
+  uploadAttachment,
+} from "../../store/forever/userSlice";
+import { userService } from "../../services/userService";
+// import jwt from "jsonwebtoken";
 
 const Root = styled("div")(({ theme }) => ({
   ".navbar-nav ul": {
@@ -59,6 +64,8 @@ const Root = styled("div")(({ theme }) => ({
     height: "47px",
     color: "white",
     outline: "none",
+    display: "flex",
+    alignItems: "center",
   },
   textarea: {
     textIndent: "20px",
@@ -84,33 +91,54 @@ function CreateProfilePage() {
   const [textMessage, setTextMessage] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
   const dispatch = useDispatch();
-  const { isSuccess, isError, message } = useSelector(
+  const [submitLoading, setSubmitLoading] = useState(false);
+  const { isSuccess, isError, message, isLoading } = useSelector(
     (state) => state.forever.user
   );
+  const authData = useSelector((state) => state.forever.auth);
 
   const sendMessage = useCallback(async () => {
+    console.log("date", date);
+
+    let formData = new FormData();
+    console.log("selected file", selectedFile);
+
+    formData.append("file", selectedFile);
+    formData.append("fileName", selectedFile.name);
+    // const decodedToken = jwt.decode(authData.authToken);
+    setSubmitLoading(true);
+    const response = await userService.uploadPicture(formData);
+    setSubmitLoading(false);
     const data = {
       email: email,
       phone_number: phone,
       message: textMessage,
       subject: subject,
       name: name,
+      date: date,
+      link: response.data,
     };
 
     dispatch(foreverMessage(data));
-  }, [email, phone, textMessage, subject, name]);
+  }, [email, phone, textMessage, subject, name, selectedFile]);
 
   useEffect(() => {
+    console.log("auth token", authData.email);
     if (isError) {
       // toast.error(message);
       // alert("error");
     } else if (isSuccess) {
-      // alert("success");
+      alert("success");
       // toast.success("Welcome Back!");
     }
+    if (isLoading) {
+      setSubmitLoading(true);
+    }
     // dispatch(authReset());
-  }, [isSuccess, isError, message, history, dispatch]);
+  }, [isSuccess, isError, message, history, isLoading, dispatch]);
 
   return (
     <Root>
@@ -188,11 +216,38 @@ function CreateProfilePage() {
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
               />
-              <input
-                id="attachment"
-                type="text"
-                placeholder="Add an image, video, or voice recording"
-              />
+              <div className="flex items-center justify-center w-full">
+                <label
+                  htmlFor="dropzone-file"
+                  style={{
+                    background:
+                      "linear-gradient(116.79deg,hsla(0,0%,100%,.48),hsla(0,0%,100%,.12) 99.45%)",
+                  }}
+                  className="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 rounded-[47px] cursor-pointer"
+                >
+                  {selectedFile ? (
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span className="font-semibold">
+                          Uploaded ({selectedFile.name})
+                        </span>
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span className="font-semibold">Click to upload</span>
+                      </p>
+                    </div>
+                  )}
+                  <input
+                    id="dropzone-file"
+                    type="file"
+                    onChange={(e) => setSelectedFile(e.target.files[0])}
+                    className="hidden"
+                  />
+                </label>
+              </div>
             </div>
             <div className="flex gap-20 mt-20">
               <input
@@ -206,6 +261,7 @@ function CreateProfilePage() {
                 id="schedule_time"
                 type="date"
                 className="pr-10"
+                onChange={(e) => setDate(e.target.value)}
                 placeholder="When would you like to send this message?"
               />
             </div>
@@ -238,6 +294,29 @@ function CreateProfilePage() {
               color="secondary"
               onClick={() => sendMessage()}
             >
+              {submitLoading && (
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-12 w-12 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              )}
+
               <span className="mx-8">Schedule a Message</span>
             </Button>
           </div>

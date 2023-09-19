@@ -6,6 +6,7 @@ const initialState = {
   isSuccess: false,
   isLogoutSuccess: false,
   isError: false,
+  link: "",
   message: "",
 };
 
@@ -28,6 +29,20 @@ export const foreverMessage = createAsyncThunk(
   }
 );
 
+// Upload Attachment
+export const uploadAttachment = createAsyncThunk(
+  "user/uploadAttachment",
+  async (data, thunkAPI) => {
+    try {
+      console.log("data----slice", data);
+      return await userService.uploadPicture(data);
+    } catch (error) {
+      const message = errorMessageHandler(error);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -42,6 +57,21 @@ const userSlice = createSlice({
       state.isSuccess = true;
     });
     builder.addCase(foreverMessage.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.message = action.payload;
+    });
+    builder.addCase(uploadAttachment.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(uploadAttachment.fulfilled, (state, action) => {
+      alert("successfully scheduled!");
+      console.log("link", action.payload);
+      state.link = action.payload;
+      state.isLoading = false;
+      state.isSuccess = true;
+    });
+    builder.addCase(uploadAttachment.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;

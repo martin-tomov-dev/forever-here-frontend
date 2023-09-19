@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { authService } from "../../services/authService";
+// import { Jwt } from "jsonwebtoken";
 
 const initialState = {
   authToken: null,
@@ -9,6 +10,7 @@ const initialState = {
   isLogoutSuccess: false,
   isError: false,
   message: "",
+  email: "",
 };
 
 const errorMessageHandler = (error) => {
@@ -68,7 +70,7 @@ const authSlice = createSlice({
     builder.addCase(authRegister.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccess = true;
-      state.authToken = action.payload.token;
+      state.authToken = action.payload.access_token;
       state.both = action.payload.both;
     });
 
@@ -86,7 +88,9 @@ const authSlice = createSlice({
     builder.addCase(authLogin.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccess = true;
-      state.authToken = action.payload.token;
+      state.authToken = action.payload.access_token;
+      state.email = action.payload.email;
+
       state.both = action.payload.both;
     });
 
