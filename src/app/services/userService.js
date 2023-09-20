@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = `http://localhost:3001`;
+// const API_URL = `http://localhost:3001`;
+const API_URL = `http://54.162.74.23`;
 
 const config = {
   headers: {

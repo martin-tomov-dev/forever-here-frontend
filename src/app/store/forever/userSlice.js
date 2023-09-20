@@ -65,8 +65,6 @@ const userSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(uploadAttachment.fulfilled, (state, action) => {
-      alert("successfully scheduled!");
-      console.log("link", action.payload);
       state.link = action.payload;
       state.isLoading = false;
       state.isSuccess = true;

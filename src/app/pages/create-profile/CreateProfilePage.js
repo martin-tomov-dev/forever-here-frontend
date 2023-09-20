@@ -127,15 +127,17 @@ function CreateProfilePage() {
 
   useEffect(() => {
     console.log("auth token", authData.email);
-    if (isError) {
-      // toast.error(message);
-      // alert("error");
-    } else if (isSuccess) {
-      alert("success");
-      // toast.success("Welcome Back!");
-    }
+    // if (isError) {
+    //   // toast.error(message);
+    //   // alert("error");
+    // } else if (isSuccess) {
+    //   alert("success");
+    //   // toast.success("Welcome Back!");
+    // }
     if (isLoading) {
       setSubmitLoading(true);
+    } else {
+      setSubmitLoading(false);
     }
     // dispatch(authReset());
   }, [isSuccess, isError, message, history, isLoading, dispatch]);
