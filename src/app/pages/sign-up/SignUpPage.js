@@ -57,6 +57,7 @@ function SignUpPage() {
       mobile_number: mobileNumber,
       email: email,
       password: password,
+      user_type: "user",
     };
 
     console.log("data---------->", data, options);
