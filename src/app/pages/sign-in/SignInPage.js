@@ -40,6 +40,7 @@ function SignInPage() {
 
   useEffect(() => {
     if (isError) {
+      console.log("error");
       // toast.error(message);
     } else if (isSuccess) {
       // toast.success("Welcome Back!");
