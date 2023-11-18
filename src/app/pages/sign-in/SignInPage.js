@@ -44,6 +44,8 @@ function SignInPage() {
       // toast.error(message);
     } else if (isSuccess) {
       // toast.success("Welcome Back!");
+      console.log("start");
+
       navigate("/create-profile");
     }
     // dispatch(authReset());
