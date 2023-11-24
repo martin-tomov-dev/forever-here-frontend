@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const API_URL = `http://localhost:3001`;
 const API_URL = "http://3.8.212.120:3001";
-
+//
 const config = {
   headers: {
     "Content-Type": "application/json",
@@ -35,7 +35,14 @@ const uploadPicture = async (data) => {
   return response;
 };
 
+const getMessageById = async (id) => {
+  console.log("message id", id);
+  const response = await axios.get(`${API_URL}/users/forever-message/${id}`);
+  return response;
+};
+
 export const userService = {
   foreverMessage,
   uploadPicture,
+  getMessageById,
 };
