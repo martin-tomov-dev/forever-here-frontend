@@ -285,7 +285,7 @@ function CreateProfilePage() {
               <input
                 id="mobile_number"
                 type="text"
-                placeholder="Mobile number for this message"
+                placeholder="Mobile number for this message (447860019066)"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
